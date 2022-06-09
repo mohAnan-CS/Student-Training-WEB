@@ -1,0 +1,327 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #fcfcfc;
+    font-family: sans-serif;
+    background-image: url("images/my-photo.png");
+}
+
+footer{
+    background-color: #111;
+    height: auto;
+    width: 100%;
+    font-family: sans-serif;
+    padding-top: 40px;
+    color: #fff;
+    
+}
+
+.footer-content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.footer-content h3{
+    font-size: 1.8rem;
+    font-weight: 400;
+    text-transform: capitalize;
+    line-height: 3rem;
+}
+
+.footer-content p {
+    max-width: 500px;
+    margin: 10px auto;
+    line-height: 28px;
+    font-size: 14px;
+    justify-content: center;
+}
+
+.socials{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 0 3rem 0;
+}
+
+.socials li{
+    margin: 0 10px;
+}
+
+.socials a{
+    text-decoration: none;
+    color: #fff;
+}
+
+.socials a i{
+    font-size: 1.1rem;
+    transition: color .5s ease;
+}
+
+.socials a:hover i{
+    color: aqua;
+}
+
+.footer-bottom{
+    background: #000;
+    width: 100%;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-bottom p{
+    font-size: 14px;
+    word-spacing: 2px;
+    text-transform: capitalize;
+} 
+
+.footer-bottom span{
+    text-transform: uppercase;
+    opacity: .4;
+}
+/* footer design */
+
+/* header css */ 
+.logo{
+    width: 20rm;
+}
+
+header{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px 2%;
+    border-bottom: black solid 5px;
+    background-color: rgb(207, 11, 11);
+}
+
+header h1{
+    padding-left: 20px;
+    color: rgb(58, 153, 161);
+    margin-right: auto;
+}
+
+header img {
+    width: 100px;
+    cursor: pointer;
+}
+
+.header-logout{
+    justify-content: flex-start;
+}
+
+.header-logout h1{
+    margin-right: 15%;
+}
+
+.div-logout-name{
+    margin-left: auto;
+    padding-right: 3em;
+    list-style: none;
+}
+
+.div-logout-name li a{
+    transition: all 0.5s ease;
+    text-decoration: none;
+    font-weight: 550;
+    color: rgb(20, 19, 19);
+}
+
+.div-logout-name li a:hover{
+    color: rgb(255, 255, 255);
+}
+
+.div-logout-name li {
+    font-weight: 550;
+    padding-top: 10px;
+    color: yellow;
+}
+
+.nav-link{
+    list-style: none;
+}
+
+.nav-link li{
+    display: inline-block;
+    padding: 0px 18px;
+    
+}
+
+.nav-link li a {
+    transition: all 0.4s ease;
+    text-decoration: none;
+    font-weight: 550;
+    color: rgb(255, 255, 255);
+}
+
+
+#login-head{
+    color: rgb(193, 24, 24);
+    transition: all 0.4s ease;
+}
+
+#login-head :hover{
+    color: rgb(53, 201, 36);
+}
+
+.nav-link li a:hover{
+    color: rgb(25, 158, 158);
+}
+
+
+.login-box{
+    
+    width: fit-content;
+    margin-left: 20px;
+    padding: 20px;
+    align-items: center;
+}
+.login-box input[type="text"] , input[type="password"] {
+    margin-bottom: 20px;
+    align-items: center;
+    width: 300px;
+    margin: 20px auto;
+    padding: 14px 10px;
+    text-align: center;
+    display: block;
+    background: none;
+    border: 0;
+    outline: none; 
+    border-radius: 24px;
+    border: 2px black solid;
+    transition: 0.25s;
+}
+
+.login-box input[type="password"]:focus {
+    width: 340px;
+}
+    
+.login-box input[type="text"]:focus {
+    width: 340px;
+}
+
+.login-box input[type="submit"]{
+    font-weight: 600;
+    width: 200px;
+    height: 40px;
+    background: gray;
+    border-radius: 20px;
+    transition-duration: 0.45s ;
+    margin-left: 40px;
+    
+}
+
+.login-box input[type="submit"]:hover{
+    background-color: aqua;
+}
+
+.login-main{
+    height: 300px;
+}
+
+main h2{
+    margin-top: 50px;
+    margin-left: 20px;
+    border-bottom: 2px black solid;
+    width: 70%;
+}
+
+/* aside */
+
+aside{
+    border: black 2px solid;
+    width: 400px;
+    position: absolute;
+    top: 10em;
+    right: 0;
+    margin-right: 10px;
+    border-radius: 20px;
+}
+
+.login-aside{
+    height: 17em;
+    padding: 15px;
+}
+
+.login-aside h2{
+    border-bottom: 2px black solid;
+    margin-bottom: 10px;
+    color: rgb(32, 117, 117);
+}
+
+/* student list css */
+
+
+
+/* student css */
+
+.description-img{
+    width: 300px;
+    height: 200px;
+    margin-top: 10px;
+    margin-left: 16px;
+    padding-right: 40px;
+    border-right: 1.3px rgb(237, 181, 181) solid;
+}
+
+.decription{
+    position: absolute;
+    top: 220px;
+    left: 400px;
+}
+
+#description-student-img.description-img{
+    width: 200px;
+    margin-bottom: 50px;
+    margin-top: 20px;
+    margin-left: 40px;
+}
+
+#description-student.decription{
+    left: 280px;
+    margin-top: 10px;
+}
+
+dd{
+    padding-left: 20px;
+    padding-top: 3px;
+    color: black;
+    text-decoration: none;
+}
+
+dt{
+    color: rgb(121, 9, 9);
+    font-weight: 550;
+}
+
+.decription a{
+    color: #111;
+    text-decoration: none;
+    transition: 0.20s ease-in;
+}
+
+.decription a:hover{
+    color: rgb(160, 36, 17);
+}
+
+.back-edit-link{
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.back-edit-link a{
+    color: #000;
+}
+
+.back-edit-link span{
+    color: rgb(190, 8, 8);
+    font-weight: 600;
+}
