@@ -1,7 +1,8 @@
 <?php include "parts/_header.php" ?>
 <main>
     <h2>Home Page</h2>
-    <?php 
+    <?php
+    include "model.php";
     echo print_r($_SESSION );
     ?>
     <br>

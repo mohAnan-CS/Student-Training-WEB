@@ -10,7 +10,7 @@ class DatabaseConnection{
             $pdo = new PDO($dsn , $user , $password);
             return $pdo; 
         }catch(PDOException $exception){
-            echo $exception->getMessage();
+            echo "<h1>No DataBase Connection</h1>";
         }
     }
 }

@@ -1,50 +1,21 @@
 <?php include "parts/_header.php" ?>
 <?php include_once 'parts/_db.php'; ?>
+<?php include_once 'model.php'; ?>
 <main class="login-main">
     <h2>Login</h2>
     <?php
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             if(isset($_POST['login']) && !empty($_POST['username']) 
                     && !empty($_POST['password']) ){
-                    $object_db = new DatabaseConnection;
-                    $conn = $object_db->connect();
                     $username = $_POST['username'];
                     $password = $_POST['password'];
-                    $query = "SELECT id , username , password 
-                    , displayname , lasthit , usertype FROM user 
-                    WHERE username = :username AND password =:password";
-                    $statement = $conn->prepare($query);
-                    $statement->execute(
-                        array(
-                            'username' => $_POST['username'],
-                            'password' => $_POST['password']
-                        )
-                    );
-                    $count = $statement->rowCount();
-                    $displayname = "";
-                    $username = "";
-                    $is_login = 1;
-                    if (session_status() === PHP_SESSION_NONE) {
-                        session_start();
-                    }
-                    if ($count > 0){
-                        while($row=$statement->fetch(PDO::FETCH_NUM)){
-                            $username=$row[1];
-                            $displayname=$row[3];
-                        }
-                        $_SESSION['username'] = $username;
-                        $_SESSION['displayname'] = $displayname;
-                        $_SESSION['is_login'] = $is_login;
-                        header("location:home.php");
-                    }else{
-                        //Wrong info
-                    }
+                    $model_obj = new Model;
+                    $model_obj->checkLogin($username , $password);
                 }
         }
     ?>
     <div class="login-box">
-        <form class="login-form" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); 
-            ?>"  method="post">
+        <form class="login-form" action="?"  method="post">
             <div>
                 <input class="text-filed-login" type="text" placeholder="Username" name="username" required>
             </div>
