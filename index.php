@@ -1,8 +1,6 @@
 <?php include "parts/_header.php" ?>
-<?php include_once 'parts/_db.php'; ?>
 <?php include_once 'model.php'; ?>
 <main class="login-main">
-    <h2>Login</h2>
     <?php
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             if(isset($_POST['login']) && !empty($_POST['username']) 
@@ -14,6 +12,9 @@
                 }
         }
     ?>
+    <!-- if he has login -->
+    <?php if (!isset($_SESSION['is_login'])){ ?>
+    <h2>Login</h2>
     <div class="login-box">
         <form class="login-form" action="?"  method="post">
             <div>
@@ -25,8 +26,30 @@
             <input class="login-btn" type="submit" name="login" value="Login">
         </form>
     </div>
-
-    
+    <?php } else { ?>
+    <h2>Home Page</h2>
+    <table class="table-info-home">
+        <thead>
+            <tr>
+                <th>User Id</th>
+                <th>Display Name</th>
+                <th>User Type</th>
+                <th>
+                    <?php if($_SESSION['usertype'] == "company"){echo "User Company Id";}
+                    else{echo "User Student Id";} ?>
+                </th>
+            </tr>
+        </thead>
+        <tbody>            
+            <tr>       
+                <td><?php echo $_SESSION['userid'] ?></td>
+                <td><?php echo $_SESSION['displayname'] ?></td>
+                <td><?php echo $_SESSION['usertype'] ?></td>
+                <td>No id</td>
+            </tr>
+        </tbody>
+    </table>
+    <?php } ?>
 </main>
 <aside class="login-aside">
     <h2>Aside</h2>
@@ -37,4 +60,3 @@
     </p>
 </aside>
 <?php include "parts/_footer.php" ?>
-

@@ -1,5 +1,4 @@
 <?php include "parts/_header.php" ?>
-<?php include_once 'parts/_db.php'; ?>
 <?php include_once 'model.php'; ?>
 <main>
     <?php
@@ -13,7 +12,7 @@
                     $city = $model_obj->getCity($row[2]);
                     ?>
                     <h2><?php echo $row[1] ?></h2>
-                    <img class='description-img' id='description-student-img' src='<?php echo $row[9]?>' alt='student image'/>";
+                    <img class='description-img' id='description-student-img' src='<?php echo $row[9]?>' alt='student image'/>
                     <dl class='decription' id='description-student'>
                         <dt>City:</dt>
                         <dd><?php echo $city ?></dd>
@@ -29,10 +28,15 @@
                         <dd><?php echo $row[8]?></dd>
                     </dl>
         <?php }}} ?>
-    
-    <p class="back-edit-link">
-        <a  href="students.php" >Back to Students List</a> <span>|</span> <a href="add-student.php" >Edit</a>
-    </p>  
+        <?php if ($_SESSION['userid'] == $_GET['id']){ ?>
+        <p class="back-edit-link">
+            <a  href="students.php" >Back to Students List</a> <span>|</span> <a href="add-student.php?is_edit=0&id=<?php echo $_GET['id'] ?>">Edit</a>
+        </p>
+        <?php } else { ?>
+        <p class="back-edit-link">
+            <a href="students.php" >Back to Students List</a>
+        </p>
+        <?php } ?>      
     <aside>
         <h2>Similar Students</h2>
         <p>
@@ -40,6 +44,5 @@
         </p>
     </aside>
 </main>
-
 <?php include "parts/_footer.php" ?>
 

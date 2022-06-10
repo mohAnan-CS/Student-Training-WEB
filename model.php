@@ -70,10 +70,10 @@
                 $_SESSION['userid'] = $userid;
                 $_SESSION['is_login'] = $is_login;
                 $_SESSION['usertype'] = $usertype ;
-                header("location:home.php");
-                }else{
-                    //Wrong info
-                }                 
+                header("location:index.php");
+            }else{
+                //Wrong info
+            }                 
         }//end check login function
 
         public function getStudentRecord($id){
@@ -97,6 +97,56 @@
             }
         }//end getUserId function
 
+        public function searchStudents($major , $city){
+
+            $object_db = new DatabaseConnection;
+            $conn = $object_db->connect();
+            $model_obj = new Model;
+            $cityid = $model_obj->getCityId($city);
+
+            if ($major != "" && $city == "Select City"){
+                //city empty
+                $query = "SELECT * FROM student WHERE major LIKE '%$major%'";
+                $statement = $conn->prepare($query);
+                $statement->execute();
+                return $statement ; 
+            }
+            else if ($city != "Select City" && $major == ""){
+                // major empty
+                $query = "SELECT * FROM student WHERE cityid =$cityid";
+                $statement = $conn->prepare($query);
+                $statement->execute();
+                return $statement ; 
+            }
+            else if($city != "Select City" && $major != ""){
+                // city and major
+                $query = "SELECT * FROM student WHERE major LIKE '%$major%' AND cityid =$cityid";
+                $statement = $conn->prepare($query);
+                $statement->execute();
+                return $statement ; 
+            }
+            else {
+                return 0 ;
+            }
+            
+        }
+
+        public function getCityId($city){
+            $object_db = new DatabaseConnection;
+            $conn = $object_db->connect();
+            $query = "SELECT * FROM city WHERE country = '".$city."'";
+            $statement = $conn->prepare($query);
+            $statement->execute();
+            $count = $statement->rowCount();
+            if ($count > 0){
+                $cityid = 0 ;
+                while($row=$statement->fetch(PDO::FETCH_NUM)){
+                    $cityid = $row[0];
+                }
+                return $cityid ; 
+            }else{
+            }
+        }
     }
 
 ?>

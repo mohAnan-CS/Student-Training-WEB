@@ -1,12 +1,24 @@
 <?php include "parts/_header.php" ?>
+<?php include_once 'model.php'; ?>
 <main>
-    <h2>Add Student</h2>
+    <?php if(isset($_GET['is_edit'])){if ($_GET['is_edit'] == 0 ){ ?>
+    <h2>Edit Student</h2>
+    <?php 
+        $userid = $_GET['id'];
+        $model_obj = new Model;
+        $statement = $model_obj->getStudentRecord($userid);
+        $count = $statement->rowCount();
+        if ($count > 0){
+            while($row=$statement->fetch(PDO::FETCH_NUM)){
+                $city = $model_obj->getCity($row[2]);
+            }
+        ?>
     <form action="process.php" method="post">
         <table class="edit-table">
             <tbody>
                 <tr>
                     <td>Personal Photo</td>
-                    <td><input type="file" name="photo" alt="brwose for photo" accept="image/*" /></td>
+                    <td><input value="c:/images/not-found.png"type="file" name="photo" alt="brwose for photo" accept="image/*" /></td>
                 </tr>
                 <tr>
                     <td>Name</td>
@@ -57,6 +69,9 @@
             <input type="reset" value="Clear"/>
         </div>
     </form>
+    <?php } else if (isset($_GET['is_edit'])){ if ($_GET['is_edit'] == 1){ ?>
+        <h2>Add Student</h2>
+    <?php } } }} ?>
     <a class="link-table" id="cancle-student-link" href="students.php">Cancle and return to Students List</a>
     <aside>
         <h2>Help</h2>
