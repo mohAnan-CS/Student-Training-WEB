@@ -3,7 +3,7 @@
 <?php include_once 'model.php'; ?>
 <main>
     <h2>Students List</h2>
-    <form class="student-list-form"action="?" method="get">
+    <form class="list-form"action="?" method="get">
         <div>
             <label>Student Study Major:</label>
             <input class="text-field-major" type="text" name="major"/>

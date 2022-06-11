@@ -43,7 +43,6 @@
             </nav>
         </header>
         <?php } ?>
-        
         <?php 
             if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['logout'])){
                 session_destroy();

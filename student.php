@@ -1,6 +1,22 @@
 <?php include "parts/_header.php" ?>
 <?php include_once 'model.php'; ?>
 <main>
+    <?php 
+    if (isset($_POST["file"]))
+    {
+        if($_POST["file"] == "")
+        {
+            $file = "default-avatar.jpeg";
+            echo "No<br>";
+        }
+        else
+        {
+            $file = addslashes($_POST["file"]); 
+            echo "Yes<br>";  
+        }
+    }
+    ?>
+
     <?php
         if(isset($_GET['id'])){
             $userid = $_GET['id'];
@@ -19,7 +35,7 @@
                         <dt>Email:</dt>
                         <dd><a href='mailto:<?php echo $row[3] ?>'><?php echo $row[3] ?></a></dd>
                         <dt>Tel:</dt>
-                        <dd><a href='tel:+<?php echo $row[4] ?>'>+<?php echo $row[4] ?></a></dd>
+                        <dd><a href='tel:+<?php echo $row[4] ?>'><?php echo $row[4] ?></a></dd>
                         <dt>Major:</dt>
                         <dd><?php echo $row[6] ?></dd>
                         <dt>Projects:</dt>
