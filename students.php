@@ -92,7 +92,10 @@
             <?php } } } }?>
         </tbody>
     </table>
-    <a class="add-student-link" href="add- .php" alt="add student">Add Student</a>
+    <!-- if statement to check if usertype equal student to access add link or not -->
+    <?php if ($_SESSION['usertype'] == 'student'){ ?>
+        <a class="add-student-link" href="add-student.php" alt="add student">Add Student</a>
+    <?php } ?>
     <aside>
         <h2>Distinguished Students</h2>
         <p>

@@ -44,7 +44,7 @@
                         <dd><?php echo $row[8]?></dd>
                     </dl>
         <?php }}} ?>
-        <?php if ($_SESSION['userid'] == $_GET['id']){ ?>
+        <?php if ($_SESSION['userid'] == $_GET['id'] && $_SESSION['usertype'] == "student"){ ?>
         <p class="back-edit-link">
             <a  href="students.php" >Back to Students List</a> <span>|</span> <a href="add-student.php?is_edit=0&id=<?php echo $_GET['id'] ?>">Edit</a>
         </p>

@@ -174,10 +174,69 @@
             , projects , interests , photopath , userid FROM student WHERE userid ='".$id."'";
             $statement = $conn->prepare($query);
             $statement->execute();
-            
-            
             return $statement ; 
         }//end getStudentRecord function
+
+        public function getCompaniesRecord(){
+                $object_db = new DatabaseConnection;
+                $conn = $object_db->connect();
+                $query = "SELECT * FROM company";
+                $statement = $conn->prepare($query);
+                $statement->execute();
+                return $statement ;
+        }
+
+        public function searchCompanies($name , $city){
+
+            $object_db = new DatabaseConnection;
+            $conn = $object_db->connect();
+            $model_obj = new Model;
+            $cityid = $model_obj->getCityId($city);
+
+            if ($name != "" && $city == "Select City"){
+                //city empty
+                $query = "SELECT * FROM company WHERE name LIKE '%$name%'";
+                $statement = $conn->prepare($query);
+                $statement->execute();
+                return $statement ; 
+            }
+            else if ($city != "Select City" && $name == ""){
+                // major empty
+                $query = "SELECT * FROM company WHERE cityid =$cityid";
+                $statement = $conn->prepare($query);
+                $statement->execute();
+                return $statement ; 
+            }
+            else if($city != "Select City" && $name != ""){
+                // city and major
+                $query = "SELECT * FROM company WHERE name LIKE '%$name%' AND cityid =$cityid";
+                $statement = $conn->prepare($query);
+                $statement->execute();
+                return $statement ; 
+            }
+            else {
+                return 0 ;
+            }
+            
+        }
+
+        public function getAllCompany($userid){
+                $object_db = new DatabaseConnection;
+                $conn = $object_db->connect();
+                $query = "SELECT * FROM company WHERE userid='$userid'";
+                $statement = $conn->prepare($query);
+                $statement->execute();
+                return $statement ;
+        }
+
+        public function getAllStudent($userid){
+            $object_db = new DatabaseConnection;
+            $conn = $object_db->connect();
+            $query = "SELECT * FROM student WHERE userid='$userid'";
+            $statement = $conn->prepare($query);
+            $statement->execute();
+            return $statement ;
+        }
     }
 
 ?>

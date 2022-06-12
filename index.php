@@ -26,18 +26,18 @@
             <input class="login-btn" type="submit" name="login" value="Login">
         </form>
     </div>
+
+
+
     <?php } else { ?>
     <h2>Home Page</h2>
     <table class="table-info-home">
+        <caption>User Information</caption>
         <thead>
             <tr>
                 <th>User Id</th>
                 <th>Display Name</th>
                 <th>User Type</th>
-                <th>
-                    <?php if($_SESSION['usertype'] == "company"){echo "User Company Id";}
-                    else{echo "User Student Id";} ?>
-                </th>
             </tr>
         </thead>
         <tbody>            
@@ -45,8 +45,53 @@
                 <td><?php echo $_SESSION['userid'] ?></td>
                 <td><?php echo $_SESSION['displayname'] ?></td>
                 <td><?php echo $_SESSION['usertype'] ?></td>
-                <td>No id</td>
             </tr>
+        </tbody>
+    </table>
+    <table class="table-info-home" id="table-id">
+        <caption>
+        <?php if($_SESSION['usertype'] == "company"){echo "User Companies";}
+                    else{echo "User Students";} ?>
+        </caption>
+        <thead>
+            <tr>
+                <th>
+                <?php if($_SESSION['usertype'] == "company"){echo "Company Name";}
+                    else{echo "Student Name";} ?>
+                </th>
+                <th>
+                    <?php if($_SESSION['usertype'] == "company"){echo "User Company Id";}
+                    else{echo "User Student Id";} ?>
+                </th>
+            </tr>
+        </thead>
+        <tbody>            
+            <?php
+            if($_SESSION['usertype'] == "company"){
+                $userid = $_SESSION['userid'];
+                $model_obj = new Model;
+                $statement = $model_obj->getAllCompany($userid);
+                $count = $statement->rowCount();
+                if ($count > 0){
+                    while($row=$statement->fetch(PDO::FETCH_NUM)){
+                        ?>
+                    <tr>       
+                        <td><?php echo $row[1] ?></td>
+                        <td><?php echo $row[8] ?></td>
+                    </tr>
+            <?php } } } else { 
+                $userid = $_SESSION['userid'];
+                $model_obj = new Model;
+                $statement = $model_obj->getAllStudent($userid);
+                $count = $statement->rowCount();
+                if ($count > 0){
+                    while($row=$statement->fetch(PDO::FETCH_NUM)){
+                        ?>
+                    <tr>       
+                        <td><?php echo $row[1] ?></td>
+                        <td><?php echo $row[10] ?></td>
+                    </tr>
+            <?php } } }  ?>
         </tbody>
     </table>
     <?php } ?>

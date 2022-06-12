@@ -223,7 +223,7 @@ header img {
 }
 
 .login-main{
-    height: 300px;
+    height: max-content;
 }
 
 main h2{
@@ -327,18 +327,19 @@ dt{
 }
 
 .table-info-home {
-    margin-left: 20em;
+    margin-left: 3em;
     margin-right: auto;
     margin-top: 2em;
-    border: black 2px solid;
-    
+    margin-bottom: 2em;
+    border: black 1px solid;
+    border-collapse: collapse;
 }
 
 .table-info-home thead tr th {
     padding: 20px;
     text-align: center;
-    color: rgb(197, 8, 8);
-    background-color: rgb(236, 215, 25);
+    color: rgb(226, 216, 216);
+    background-color: rgb(0, 0, 0);
     
 }
 
@@ -438,4 +439,12 @@ dt{
 
 .list-form input[type="text"]{
     height: 25px;
+}
+
+
+
+
+caption{
+    color: red;
+    font-weight: 550;
 }
