@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3307:3307
--- Generation Time: Jun 06, 2022 at 09:23 PM
+-- Generation Time: Jun 12, 2022 at 12:13 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -30,8 +30,19 @@ SET time_zone = "+00:00";
 CREATE TABLE `city` (
   `id` int(50) NOT NULL,
   `name` varchar(50) NOT NULL,
-  `country` int(50) NOT NULL
+  `country` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `city`
+--
+
+INSERT INTO `city` (`id`, `name`, `country`) VALUES
+(3, 'Palestine', 'Tulkarm'),
+(4, 'Palestine', 'Jerusalem'),
+(5, 'Jordan', 'Amman'),
+(6, 'USA', 'New York'),
+(7, 'USA', 'Miami');
 
 -- --------------------------------------------------------
 
@@ -71,6 +82,14 @@ CREATE TABLE `student` (
   `userid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `student`
+--
+
+INSERT INTO `student` (`id`, `name`, `cityid`, `email`, `tel`, `university`, `major`, `projects`, `interests`, `photopath`, `userid`) VALUES
+(1, 'Mohammad Anan Abo Jazar', 6, 'mohammad@hotmail.com', '0595693999', 'Birzeit', 'Computer Science', 'Huffman , Longest common subsequnce', 'backend developer \r\ndev ops', 'images/student/moh-photo.png', 1),
+(2, 'Mohammad Ahmad', 4, 'ahmad@hotmail.com', '059569323', 'Al Quds', 'Cyber Security', 'hotel system', 'Mobile Application', 'images/personal-photo.png', 2);
+
 -- --------------------------------------------------------
 
 --
@@ -105,7 +124,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `password`, `displayname`, `lasthit`, `usertype`) VALUES
-(1, 'moh', '1234', 'Mohammad Anan', '2022-06-15 23:52:42.000000', 'company');
+(1, 'moh', '1234', 'Mohammad Anan', '2022-06-15 23:52:42.000000', 'company'),
+(2, 'h', '1', 'Ibrahim', '2022-06-30 18:48:52.000000', 'company');
 
 --
 -- Indexes for dumped tables
@@ -161,7 +181,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `city`
 --
 ALTER TABLE `city`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `company`
@@ -173,7 +193,7 @@ ALTER TABLE `company`
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `students_applications`
@@ -185,7 +205,7 @@ ALTER TABLE `students_applications`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
@@ -202,7 +222,7 @@ ALTER TABLE `company`
 -- Constraints for table `student`
 --
 ALTER TABLE `student`
-  ADD CONSTRAINT `student_ibfk_1` FOREIGN KEY (`cityid`) REFERENCES `city` (`id`),
+  ADD CONSTRAINT `student_ibfk_1` FOREIGN KEY (`cityid`) REFERENCES `city` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `student_ibfk_2` FOREIGN KEY (`userid`) REFERENCES `user` (`id`);
 COMMIT;
 

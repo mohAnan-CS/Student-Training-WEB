@@ -83,7 +83,15 @@
             , projects , interests , photopath , userid FROM student WHERE userid ='".$id."'";
             $statement = $conn->prepare($query);
             $statement->execute();
-            return $statement ; 
+            $count = $statement->rowCount();
+            $data = array();
+            if ($count = 1){
+                while($row=$statement->fetch(PDO::FETCH_NUM)){
+                    $data[] = $row;
+                }
+            }
+
+            return $data ; 
         }//end getStudentRecord function
 
         public function getUserId($usertype , $userid){
@@ -147,6 +155,29 @@
             }else{
             }
         }
+
+        public function updateUserInformation($id,$photo , $name , $city ,$email , $tel , $university ,$major , $projects , $intrests ){
+            $object_db = new DatabaseConnection;
+            $conn = $object_db->connect();
+            $obj = new Model;
+            
+            $query = "UPDATE student SET name='$name' , cityid = $city , email='$email' , tel= '$tel' , university='$university' , major = '$major' 
+            , projects='$projects' , interests = '$intrests' , photopath='$photo' WHERE id = $id";
+            $statement = $conn->prepare($query);
+            $statement->execute();
+        }
+
+        public function getStudentRecord1($id){
+            $object_db = new DatabaseConnection;
+            $conn = $object_db->connect();
+            $query = "SELECT id , name , cityid , email , tel , university , major 
+            , projects , interests , photopath , userid FROM student WHERE userid ='".$id."'";
+            $statement = $conn->prepare($query);
+            $statement->execute();
+            
+            
+            return $statement ; 
+        }//end getStudentRecord function
     }
 
 ?>

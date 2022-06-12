@@ -21,7 +21,7 @@
         if(isset($_GET['id'])){
             $userid = $_GET['id'];
             $model_obj = new Model;
-            $statement = $model_obj->getStudentRecord($userid);
+            $statement = $model_obj->getStudentRecord1($userid);
             $count = $statement->rowCount();
             if ($count > 0){
                 while($row=$statement->fetch(PDO::FETCH_NUM)){
