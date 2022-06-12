@@ -157,14 +157,16 @@
         }
 
         public function updateUserInformation($id,$photo , $name , $city ,$email , $tel , $university ,$major , $projects , $intrests ){
+            echo " name = ".$name;
             $object_db = new DatabaseConnection;
             $conn = $object_db->connect();
             $obj = new Model;
-            
-            $query = "UPDATE student SET name='$name' , cityid = $city , email='$email' , tel= '$tel' , university='$university' , major = '$major' 
-            , projects='$projects' , interests = '$intrests' , photopath='$photo' WHERE id = $id";
+            echo $id ;
+            $query = "UPDATE `student` SET `name`='$name' , `cityid` = '$city' , `email`='$email' , `tel`= '$tel' , `university`='$university' , `major` = '$major' 
+            , `projects`='$projects' , `interests` = '$intrests' , `photopath`='$photo' WHERE `student`.`userid` = $id";
             $statement = $conn->prepare($query);
             $statement->execute();
+            
         }
 
         public function getStudentRecord1($id){
@@ -236,6 +238,24 @@
             $statement = $conn->prepare($query);
             $statement->execute();
             return $statement ;
+        }
+
+        public function getCompanyRecord1($id){
+            $object_db = new DatabaseConnection;
+            $conn = $object_db->connect();
+            $query = "SELECT * FROM company WHERE userid ='".$id."'";
+            $statement = $conn->prepare($query);
+            $statement->execute();
+            return $statement ; 
+        }
+
+        public function addStudent($name , $cityid  ,$email , $tel , $university ,$major , $projects , $intrests , $photo , $userid){
+            $object_db = new DatabaseConnection;
+            $conn = $object_db->connect();
+            $query = "INSERT INTO student (id , name , cityid , email , tel , university , major , projects , interests , photopath , userid)
+            VALUES ('NULL' , '$name' , '$cityid' , '$email' , '$tel' , '$university' , '$major' , '$projects' , '$intrests' , '$photo' , '$userid')";
+            $statement = $conn->prepare($query);
+            $statement->execute();
         }
     }
 

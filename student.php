@@ -1,19 +1,9 @@
 <?php include "parts/_header.php" ?>
 <?php include_once 'model.php'; ?>
 <main>
-    <?php 
-    if (isset($_POST["file"]))
-    {
-        if($_POST["file"] == "")
-        {
-            $file = "default-avatar.jpeg";
-            echo "No<br>";
-        }
-        else
-        {
-            $file = addslashes($_POST["file"]); 
-            echo "Yes<br>";  
-        }
+<?php 
+    if (!isset($_SESSION['userid'])){
+        header("location:index.php");
     }
     ?>
 
@@ -21,7 +11,7 @@
         if(isset($_GET['id'])){
             $userid = $_GET['id'];
             $model_obj = new Model;
-            $statement = $model_obj->getStudentRecord1($userid);
+            $statement = $model_obj->getStudentRecord1($userid );
             $count = $statement->rowCount();
             if ($count > 0){
                 while($row=$statement->fetch(PDO::FETCH_NUM)){

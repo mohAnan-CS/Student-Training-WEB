@@ -1,5 +1,10 @@
 <?php include "parts/_header.php" ?>
 <main>
+<?php 
+    if (!isset($_SESSION['userid'])){
+        header("location:index.php");
+    }
+    ?>
     <h2>Add Company</h2>
     
     

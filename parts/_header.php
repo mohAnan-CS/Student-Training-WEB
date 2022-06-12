@@ -7,6 +7,8 @@
         <title>Student Training</title>
     </head>
     <body>
+
+    
         <!-- Check if user has login and change the login to logout , display name and display session info for the user-->
         <?php if (session_status() === PHP_SESSION_NONE) { session_start(); } ?>
         <?php if(isset($_SESSION['is_login']) && $_SESSION['is_login'] == 1){ ?>

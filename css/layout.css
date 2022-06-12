@@ -356,6 +356,7 @@ dt{
 .table-data{
     margin-left: 3em;
     margin-top: 2em;
+    margin-bottom: 30px;
     text-align: center;
     border-collapse: collapse;
     width: 66%;
@@ -441,10 +442,35 @@ dt{
     height: 25px;
 }
 
-
-
-
 caption{
     color: red;
     font-weight: 550;
+}
+
+#description-company-img.description-img{
+    width: 220px;
+    height: 200px;
+    margin-top: 30px;
+    margin-left: 30px;
+    margin-bottom: 20px;
+}
+
+#description-company.decription{
+
+    margin-top: 20px;
+    left: 300px;
+}
+
+#description-company.decription dd{
+    padding-left: 30px;
+}
+
+.add-student-link{
+    margin-left: 50px;
+    color: black;
+}
+
+.add-link-div{
+    margin-bottom: 20px;
+    margin-top: 20px;
 }

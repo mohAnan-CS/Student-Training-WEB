@@ -1,6 +1,7 @@
 <?php include "parts/_header.php" ?>
 <?php include_once 'model.php'; ?>
 <main class="login-main">
+
     <?php
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             if(isset($_POST['login']) && !empty($_POST['username']) 
@@ -65,6 +66,11 @@
                 </th>
             </tr>
         </thead>
+
+        <? 
+        
+        
+        ?>
         <tbody>            
             <?php
             if($_SESSION['usertype'] == "company"){

@@ -1,36 +1,31 @@
 <?php include "parts/_header.php" ?>
 <?php include_once 'model.php'; ?>
 <main>
+<?php 
+    if (!isset($_SESSION['userid'])){
+        header("location:index.php");
+    }
+    ?>
+
     <!-- isEdit == 1 -> add page -->
     <?php if ($_GET['is_edit'] == 1 ){ ?>
     <h2>Add Student</h2>
-    <?php 
-        $userid = $_GET['id'];
-        $model_obj = new Model;
-        $statement = $model_obj->getStudentRecord($userid);
-        $count = $statement->rowCount();
-        if ($count > 0){
-            while($row=$statement->fetch(PDO::FETCH_NUM)){
-                $city = $model_obj->getCity($row[2]);
-            }
-        }
-        ?>
-    <form action="process.php" method="post">
+    <form action="process.php" method="post"  enctype="multipart/form-data">
         <table class="edit-table">
             <tbody>
                 <tr>
                     <td>Personal Photo</td>
-                    <td><input type="file" name="photo-student" alt="brwose for photo" accept="image/*" required/></td>
+                    <td><input type="file" id="photo" name="photo" alt="brwose for photo" accept="image/*" required/></td>
                 </tr>
                 <tr>
                     <td>Name</td>
-                    <td><input class="text-field-major" type="text" name="name-student" alt="insert name" required/></td>
+                    <td><input class="text-field-major" type="text" name="name-student" alt="insert name" /></td>
                 </tr>
                 <tr>
                     <td>City</td>
                     <td>
-                        <select name="city">
-                            <option>Select City</option>
+                        <select name="city" required>
+                            <option selected disabled>Select City</option>
                         <?php
                             $object_model = new Model;
                             $stm = $object_model->getCitys();
@@ -45,32 +40,32 @@
                 </tr>
                 <tr>
                     <td>Email</td>
-                    <td><input class="text-field-major" type="email" name="email" alt="insert email" name="email-student" required/></td>
+                    <td><input class="text-field-major" type="email" name="email" alt="insert email" name="email-student" /></td>
                 </tr>
                 <tr>
                     <td>Tel</td>
-                    <td><input class="text-field-major" type="tel" name="tel" alt="insert phone number" name="tel-student" required/></td>
+                    <td><input class="text-field-major" type="tel" name="tel" alt="insert phone number" name="tel-student" /></td>
                 </tr>
                 <tr>
                     <td>University</td>
-                    <td><input class="text-field-major" type="text" name="university-student" alt="insert university" required/></td>
+                    <td><input class="text-field-major" type="text" name="university-student" alt="insert university" /></td>
                 </tr>
                 <tr>
                     <td>Major</td>
-                    <td><input class="text-field-major" type="text" name="major-student" alt="insert major" required/></td>
+                    <td><input class="text-field-major" type="text" name="major-student" alt="insert major" /></td>
                 </tr>
                 <tr>
                     <td>Projects</td>
-                    <td><textarea name="projects-student" required></textarea></td>
+                    <td><textarea name="projects-student" ></textarea></td>
                 </tr>
                 <tr>
                     <td>Interests</td>
-                    <td><textarea name="interests-student" required></textarea></td>
+                    <td><textarea name="interests-student" ></textarea></td>
                 </tr>
             </tbody>
         </table>
         <div class="add-clear-div">
-            <input type="submit" value="Add Student"/>
+            <input type="submit"  name= "add-student" value="Add Student"/>
             <input type="reset" value="Clear"/>
         </div>
     </form>
@@ -79,7 +74,7 @@
     <!-- isEdit == 0 -> edit page -->
     <?php } else if ($_GET['is_edit'] == 0){ ?>
     <h2>Edit Student</h2>
-    <form action="process.php" method="post" name="editstudent" >
+    <form action="process.php" method="post" enctype="multipart/form-data">
         <table class="edit-table">
             <!-- this php code is return all information for the student 
             and retrive his city from database -->
@@ -92,15 +87,16 @@
             $_SESSION['image-student'] = $data[0][9];
             ?>
             <tbody>
-                <tr>
-                    <td>Personal Photo</td>
-                    <td><input name ="student-photo" type="file" name="photo-student" alt="brwose for photo" accept="image/*" /></td>
-                    
-                </tr>
-                <tr>
+            <tr>
                     <td>Name</td>
                     <td><input class="text-field-major" value="<?php echo $data[0][1]; ?>" type="text" name="name-student" alt="insert name" required/></td>
                 </tr>
+                <tr>
+                    <td>Personal Photo</td>
+                    <td><input type="file" id="studentPhoto" name="studentPhoto" alt="brwose for photo" accept="image/*" required/></td>
+                    
+                </tr>
+            
                 <tr>
                     <td>City</td>
                     <td>
@@ -149,10 +145,8 @@
                 </tr>
             </tbody>
         </table>
-        
-        
         <div class="add-clear-div">
-            <input type="submit" value="Add Student" name="edit-student"/>
+            <input type="submit" value="Edit Student" name="edit-student"/>
             <input type="reset" value="Clear"/>
         </div>
     </form>

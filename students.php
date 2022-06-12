@@ -2,6 +2,11 @@
 <?php include_once 'parts/_db.php'; ?>
 <?php include_once 'model.php'; ?>
 <main>
+    <?php 
+    if (!isset($_SESSION['userid'])){
+        header("location:index.php");
+    }
+    ?>
     <h2>Students List</h2>
     <form class="list-form"action="?" method="get">
         <div>
@@ -93,8 +98,20 @@
         </tbody>
     </table>
     <!-- if statement to check if usertype equal student to access add link or not -->
-    <?php if ($_SESSION['usertype'] == 'student'){ ?>
-        <a class="add-student-link" href="add-student.php" alt="add student">Add Student</a>
+    <?php 
+        $userid = $_SESSION['userid'];
+        $obj = new Model;
+        $stm = $obj->getStudentRecord1($userid);
+        $counter = $stm->rowCount();
+        if ($counter == 1 && $_SESSION['usertype'] == 'student'){ 
+    ?>
+    <div class="add-link-div">
+        <a class="add-student-link" href="add-student.php?is_edit=0&id=<?php echo $_SESSION['userid']?>" >Edit Student</a>
+    </div>    
+    <?php } else if ($counter == 0 ){ ?>
+    <div class="add-link-div">
+        <a class="add-student-link" href="add-student.php?is_edit=1&id=<?php echo $_SESSION['userid']?>" >Add Student</a>
+    </div> 
     <?php } ?>
     <aside>
         <h2>Distinguished Students</h2>
