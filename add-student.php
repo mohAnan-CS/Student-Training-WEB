@@ -14,12 +14,12 @@
         <table class="edit-table">
             <tbody>
                 <tr>
-                    <td>Personal Photo</td>
-                    <td><input type="file" id="photo" name="photo" alt="brwose for photo" accept="image/*" required/></td>
-                </tr>
-                <tr>
                     <td>Name</td>
                     <td><input class="text-field-major" type="text" name="name-student" alt="insert name" /></td>
+                </tr>
+                <tr>
+                    <td>Personal Photo</td>
+                    <td><input type="file" id="photo" name="photo" alt="brwose for photo" accept="image/*" required/></td>
                 </tr>
                 <tr>
                     <td>City</td>

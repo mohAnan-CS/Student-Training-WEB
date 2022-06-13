@@ -48,7 +48,7 @@
                     while($row=$statement->fetch(PDO::FETCH_NUM)){
                         $city = $model_obj->getCity($row[2]);?>            
                         <tr>
-                            <td><img class='student-img' src='images/company/google.png' alt='company logo'/></td>
+                            <td><img class='student-img' src='<?php echo $row[7] ?>' alt='company logo'/></td>
                             <td><a class='link-table' href='company.php?id=<?php echo $row[8] ?>' alt='company link information'><?php echo $row[1] ?></a></td>        
                             <td><?php echo $city ?></td>
                             <td><?php echo $row[5] ?></td>
@@ -108,10 +108,20 @@
         </tbody>
     </table>
     <!-- if statement to check if usertype equal company to access add link or not -->
-    <?php if ($_SESSION['usertype'] == 'company'){ ?>
-        <div class="add-link-div">
-            <a class="add-student-link" href="add-company.php" alt="add company">Add Company</a>
-        </div>
+    <?php 
+        $userid = $_SESSION['userid'];
+        $obj = new Model;
+        $stm = $obj->getCompanyRecord1($userid);
+        $counter = $stm->rowCount();
+        if ($counter == 1 && $_SESSION['usertype'] == 'company'){ 
+    ?>
+    <div class="add-link-div">
+        <a class="add-student-link" href="add-company.php?is_edit=0&id=<?php echo $_SESSION['userid']?>" >Edit Company</a>
+    </div>    
+    <?php } else if ($counter == 0 ){ ?>
+    <div class="add-link-div">
+        <a class="add-student-link" href="add-company.php?is_edit=1&id=<?php echo $_SESSION['userid']?>" >Add Company</a>
+    </div> 
     <?php } ?>
     <aside>
         <h2>Distinguished Students</h2>

@@ -257,6 +257,46 @@
             $statement = $conn->prepare($query);
             $statement->execute();
         }
+
+        public function addCompany($name , $cityid  ,$email , $tel , $count ,$details , $logo , $userid){
+            $object_db = new DatabaseConnection;
+            $conn = $object_db->connect();
+            $query = "INSERT INTO company (id , name , cityid , email , tel , positioncount , positiondetails , logopath , userid)
+            VALUES ('NULL' , '$name' , '$cityid' , '$email' , '$tel' , '$count' , '$details' , '$logo' , '$userid')";
+            $statement = $conn->prepare($query);
+            $statement->execute();
+        }
+
+        public function getCompanyRecord($id){
+            $object_db = new DatabaseConnection;
+            $conn = $object_db->connect();
+            $query = "SELECT id , name , cityid , email , tel , positioncount , positiondetails 
+            , logopath , userid FROM company WHERE userid ='".$id."'";
+            $statement = $conn->prepare($query);
+            $statement->execute();
+            $count = $statement->rowCount();
+            $data = array();
+            if ($count = 1){
+                while($row=$statement->fetch(PDO::FETCH_NUM)){
+                    $data[] = $row;
+                }
+            }
+
+            return $data ; 
+        }//end getCompanyRecord function
+
+        public function updateCompanyInformation($id,$photo , $name , $city ,$email , $tel , $count ,$details ){
+            echo " name = ".$name;
+            $object_db = new DatabaseConnection;
+            $conn = $object_db->connect();
+            $obj = new Model;
+            echo $id ;
+            $query = "UPDATE `company` SET `name`='$name' , `cityid` = '$city' , `email`='$email' , `tel`= '$tel' , `positioncount`='$count' , `positiondetails` = '$details' 
+            , `logopath`='$photo' WHERE `company`.`userid` = $id";
+            $statement = $conn->prepare($query);
+            $statement->execute();
+            
+        }
     }
 
 ?>

@@ -36,7 +36,7 @@
         <?php }}} ?>
         <?php if ($_SESSION['userid'] == $_GET['id'] && $_SESSION['usertype'] == "company"){ ?>
         <p class="back-edit-link">
-            <a  href="companies.php" >Back to Company List</a> <span>|</span> <a href="add-student.php?is_edit=0&id=<?php echo $_GET['id'] ?>">Edit</a>
+            <a  href="companies.php" >Back to Company List</a> <span>|</span> <a href="add-company.php?is_edit=0&id=<?php echo $_GET['id'] ?>">Edit</a>
         </p>
         <?php } else { ?>
         <p class="back-edit-link">
