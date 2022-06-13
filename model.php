@@ -157,7 +157,6 @@
         }
 
         public function updateUserInformation($id,$photo , $name , $city ,$email , $tel , $university ,$major , $projects , $intrests ){
-            echo " name = ".$name;
             $object_db = new DatabaseConnection;
             $conn = $object_db->connect();
             $obj = new Model;
@@ -286,7 +285,7 @@
         }//end getCompanyRecord function
 
         public function updateCompanyInformation($id,$photo , $name , $city ,$email , $tel , $count ,$details ){
-            echo " name = ".$name;
+            
             $object_db = new DatabaseConnection;
             $conn = $object_db->connect();
             $obj = new Model;
@@ -296,6 +295,49 @@
             $statement = $conn->prepare($query);
             $statement->execute();
             
+        }
+
+        public function getOffers($id){
+            $object_db = new DatabaseConnection;
+            $conn = $object_db->connect();
+            $query = "SELECT  * FROM `students_applications` WHERE $id = students_applications.studentid";
+            $statement = $conn->prepare($query);
+            $statement->execute();
+            return $statement ; 
+        }
+
+        public function getStudentId($userid){
+            $object_db = new DatabaseConnection;
+            $conn = $object_db->connect();
+            $query = "SELECT * FROM student WHERE userid = ".$userid;
+            $statement = $conn->prepare($query);
+            $statement->execute();
+            $count = $statement->rowCount();
+            if ($count > 0){
+                $userid = 0 ;
+                while($row=$statement->fetch(PDO::FETCH_NUM)){
+                    $userid = $row[0];
+                }
+                return $userid ; 
+            }else{
+            }
+        }
+
+        public function getCompanyName($id){
+            $object_db = new DatabaseConnection;
+            $conn = $object_db->connect();
+            $query = "SELECT * FROM company WHERE id = ".$id;
+            $statement = $conn->prepare($query);
+            $statement->execute();
+            $city_name = "";
+            $count = $statement->rowCount();
+            if ($count > 0){
+                while($row=$statement->fetch(PDO::FETCH_NUM)){
+                    $city_name = $row[1];
+                }
+                return $city_name ; 
+            }else{
+            }
         }
     }
 

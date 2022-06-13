@@ -38,6 +38,38 @@
         <p class="back-edit-link">
             <a  href="students.php" >Back to Students List</a> <span>|</span> <a href="add-student.php?is_edit=0&id=<?php echo $_GET['id'] ?>">Edit</a>
         </p>
+        <h2>Training Offer</h2>
+        
+        
+        <table class="table-data">
+        <thead>
+            <tr>
+                <th>Company Name</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        <?php
+        $obj = new Model ;
+        $id = $obj->getStudentId($_GET['id']);
+        $statement = $obj->getOffers($id);
+        $count = $statement->rowCount();
+                if ($count > 0){
+                    while($row=$statement->fetch(PDO::FETCH_NUM)){
+                        $city_name = $obj->getCompanyName(3);
+                ?>        
+            <tr>
+                <td><?php echo $city_name?></td>
+                <td><?php echo $row[3] ?></td>
+                <td><?php echo $row[4] ?></td>
+                <td><a  href="" >Accept</a> <span>|</span> <a href="">Reject</a></td>
+                
+            </tr>
+            <?php }}?>
+        </tbody>
+    </table>
         <?php } else { ?>
         <p class="back-edit-link">
             <a href="students.php" >Back to Students List</a>

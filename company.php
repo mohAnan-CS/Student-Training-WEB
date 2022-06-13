@@ -38,6 +38,38 @@
         <p class="back-edit-link">
             <a  href="companies.php" >Back to Company List</a> <span>|</span> <a href="add-company.php?is_edit=0&id=<?php echo $_GET['id'] ?>">Edit</a>
         </p>
+        <h2>Hello</h2>
+        <table class="table-data">
+        <thead>
+            <tr>
+                <th>Request by user id</th>
+                <th>Offered</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                <select name="" id="">
+                    <option  selected="true" disabled="disabled">Select User Id</option>
+                    <?php
+                    $object_model = new Model;
+                    $stm = $object_model->getStudentsRecord();
+                    $count = $stm->rowCount();
+                    if ($count > 0){
+                        while($row=$stm->fetch(PDO::FETCH_NUM)){
+                            echo "<option>$row[10]</option>";
+                        }
+                    }?>
+                </select>
+                </td>
+                <td>Birzeit University</td>
+                <td><button><a  href="process.php" >Offered</a></button></td>
+
+                </select>
+            </tr>
+        </tbody>
+    </table>
         <?php } else { ?>
         <p class="back-edit-link">
             <a href="companies.php" >Back to Company List</a>

@@ -4,20 +4,20 @@ include_once 'model.php';
 //if post request com from edit student page 
 if (isset($_POST["edit-student"])){
     $obj = new Model ; 
-    echo print_r($_POST);
-    echo $_POST['email'];
-    echo "phot".$_FILES['studentPhoto']['name'];
+    
     if (session_status() === PHP_SESSION_NONE) { session_start(); }
     if(isset($_SESSION['idedit'])){
-        
+        echo $_FILES['studentPhoto']['name'];
+        if($_FILES["studentPhoto"]["error"] != 4){
+            echo "if statment";
             $check = getimagesize($_FILES["studentPhoto"]["tmp_name"]);
+            
             if($check !== false) {
                 $file = $_FILES['studentPhoto'];
                 copy($file['tmp_name'] , "images/student/".$file['name']);
                 $name = $_FILES['studentPhoto']['name'];
                 $photo = "images/student/".$name;
                 $cityid = $obj->getCityId($_POST['city']);
-                echo "<br>Sessio id = ".$_SESSION['idedit'];
                 $obj->updateUserInformation( $_SESSION['idedit'], 
                 $photo, 
                 $_POST['name-student'], 
@@ -29,11 +29,26 @@ if (isset($_POST["edit-student"])){
                 $_POST['projects-student'], 
                 $_POST['interests-student']);
                 header("location:students.php");
+            }
+        }else {
+            echo "else statement";
+            $photo = $_SESSION['image-student'];
+            
+                $cityid = $obj->getCityId($_POST['city']);
+                $obj->updateUserInformation( $_SESSION['idedit'], 
+                $photo, 
+                $_POST['name-student'], 
+                $cityid, 
+                $_POST['email'], 
+                $_POST['tel'] , 
+                $_POST['university-student'] , 
+                $_POST['major-student'] , 
+                $_POST['projects-student'], 
+                $_POST['interests-student']);
+                header("location:students.php");
+        }
+        
     }
-    }else{
-        //header("location:students.php");
-    }
-
 }//end if edit student post request
 
 //if post request com from edit company page 

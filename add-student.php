@@ -93,7 +93,7 @@
                 </tr>
                 <tr>
                     <td>Personal Photo</td>
-                    <td><input type="file" id="studentPhoto" name="studentPhoto" alt="brwose for photo" accept="image/*" required/></td>
+                    <td><input type="file" id="studentPhoto" name="studentPhoto" alt="brwose for photo" accept="image/*" /></td>
                     
                 </tr>
             
