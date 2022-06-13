@@ -7,7 +7,7 @@
             if(isset($_POST['login']) && !empty($_POST['username']) 
                     && !empty($_POST['password']) ){
                     $username = $_POST['username'];
-                    $password = $_POST['password'];
+                    $password = sha1($_POST['password']);
                     $model_obj = new Model;
                     $model_obj->checkLogin($username , $password);
                 }
@@ -27,7 +27,6 @@
             <input class="login-btn" type="submit" name="login" value="Login">
         </form>
     </div>
-
 
 
     <?php } else { ?>
