@@ -97,11 +97,37 @@
         public function getUserId($usertype , $userid){
 
             if (isset($usertype) && $usertype=="company"){
-
-            }else if (isset($usertype) && $usertype=="student"){
-
-            }else{
+                echo "com,pany  " ; 
+                $object_db = new DatabaseConnection;
+                $conn = $object_db->connect();
+                $query = "SELECT id , name , cityid , email , positioncount , positiondetails , logopath 
+                , projects , interests , photopath , userid FROM company WHERE id ='".$userid."'";
+                $statement = $conn->prepare($query);
+                $statement->execute();
+                $count = $statement->rowCount();
+                $userid = 0 ;
+                if ($count = 1){
+                    while($row=$statement->fetch(PDO::FETCH_NUM)){
+                        $userid = $row[8];
+                    }
+                }
+                return $userid ;
+            }else {
                 
+                $object_db = new DatabaseConnection;
+                $conn = $object_db->connect();
+                $query = "SELECT id , name , cityid , email , tel , university , major 
+                , projects , interests , photopath , userid FROM student WHERE id ='".$userid."'";
+                $statement = $conn->prepare($query);
+                $statement->execute();
+                $count = $statement->rowCount();
+                $userid = 0 ;
+                if ($count = 1){
+                    while($row=$statement->fetch(PDO::FETCH_NUM)){
+                        $userid = $row[10];
+                    }
+                }
+                return $userid ;
             }
         }//end getUserId function
 
@@ -300,7 +326,7 @@
         public function getOffers($id){
             $object_db = new DatabaseConnection;
             $conn = $object_db->connect();
-            $query = "SELECT  * FROM `students_applications` WHERE $id = students_applications.studentid";
+            $query = "SELECT  * FROM `students_applications` WHERE studentid=$id AND `applicationstatus`='sent' ORDER BY applydate ASC";
             $statement = $conn->prepare($query);
             $statement->execute();
             return $statement ; 
@@ -337,7 +363,83 @@
                 }
                 return $city_name ; 
             }else{
+
             }
+        }
+
+        public function updateStatus($status , $studentid , $companyid){
+
+            if ($status == "accept"){
+                $object_db = new DatabaseConnection;
+                $conn = $object_db->connect();
+                $obj = new Model;
+                $query = "UPDATE `students_applications` SET `applicationstatus`='accept'  
+                WHERE `students_applications`.`studentid` = $studentid AND `students_applications`.`companyid` = $companyid";
+                $statement = $conn->prepare($query);
+                $statement->execute();
+            }
+            else{
+                $object_db = new DatabaseConnection;
+                $conn = $object_db->connect();
+                $obj = new Model;
+                $query = "UPDATE `students_applications` SET `applicationstatus`='reject'  
+                WHERE `students_applications`.`studentid` = $studentid AND `students_applications`.`companyid` = $companyid";
+                $statement = $conn->prepare($query);
+                $statement->execute();
+            }
+
+        }
+
+        public function isOffered($studentid , $companyid){
+            
+            $object_db = new DatabaseConnection;
+            $conn = $object_db->connect();
+            $query = "SELECT  id  , studentid , companyid , applydate , applicationstatus , userid FROM `students_applications` WHERE `studentid`=$studentid AND `companyid`=$companyid ";
+            $statement = $conn->prepare($query);
+            $statement->execute();
+            $count = $statement->rowCount();
+            if ($count == 1){
+                return 1 ; 
+            }
+            else{
+                return 0 ;
+            }
+        }
+
+        public function getCompanyId($userid){
+            $object_db = new DatabaseConnection;
+            $conn = $object_db->connect();
+            $query = "SELECT * FROM company WHERE userid = ".$userid;
+            $statement = $conn->prepare($query);
+            $statement->execute();
+            $count = $statement->rowCount();
+            if ($count > 0){
+                $userid = 0 ;
+                while($row=$statement->fetch(PDO::FETCH_NUM)){
+                    $userid = $row[0];
+                }
+                return $userid ; 
+            }else{
+            }
+        }
+
+        public function offerTraining($studentid, $companyid , $userid){
+            echo "Today is " . date("Y/m/d") . "<br>";
+            $applydate = date("Y/m/d");
+            echo "student id = ".$studentid ."<br>";
+            echo "student id = ".$companyid ."<br>";
+
+            $object_db = new DatabaseConnection;
+            $conn = $object_db->connect();
+            $query = "INSERT IGNORE INTO `students_applications` (`id` , `studentid` , `companyid` , `applydate` , `applicationstatus` , `userid`)
+            VALUES ('NULL' , '$studentid' , '$companyid' , '$applydate' , 'sent' , '$userid' )";
+            $statement = $conn->prepare($query);
+            $statement->execute();
+        }
+
+        public function updateLastHit($usertype , $userid){
+            $time = date("Y-m-d H:i:s");
+            echo $time ;
         }
     }
 

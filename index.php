@@ -50,8 +50,8 @@
     </table>
     <table class="table-info-home" id="table-id">
         <caption>
-        <?php if($_SESSION['usertype'] == "company"){echo "User Companies";}
-                    else{echo "User Students";} ?>
+        <?php if($_SESSION['usertype'] == "company"){echo "User Company";}
+                    else{echo "User Student";} ?>
         </caption>
         <thead>
             <tr>

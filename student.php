@@ -39,8 +39,6 @@
             <a  href="students.php" >Back to Students List</a> <span>|</span> <a href="add-student.php?is_edit=0&id=<?php echo $_GET['id'] ?>">Edit</a>
         </p>
         <h2>Training Offer</h2>
-        
-        
         <table class="table-data">
         <thead>
             <tr>
@@ -53,28 +51,54 @@
         <tbody>
         <?php
         $obj = new Model ;
-        $id = $obj->getStudentId($_GET['id']);
-        $statement = $obj->getOffers($id);
+        $student_id = $obj->getStudentId($_GET['id']);
+        //$company_id = $obj->getCompanyId()
+        $statement = $obj->getOffers($student_id);
         $count = $statement->rowCount();
                 if ($count > 0){
                     while($row=$statement->fetch(PDO::FETCH_NUM)){
-                        $city_name = $obj->getCompanyName(3);
-                ?>        
+                        $city_name = $obj->getCompanyName($row[2]);
+                ?>
+            <form action = "" method="post">            
             <tr>
                 <td><?php echo $city_name?></td>
                 <td><?php echo $row[3] ?></td>
                 <td><?php echo $row[4] ?></td>
-                <td><a  href="" >Accept</a> <span>|</span> <a href="">Reject</a></td>
-                
+                <?php echo "student id = ".$row[1]." company id = ".$row[2]; ?>
+                <td><a  href="process2.php?accept&studentid=<?php echo $row[1] ?>&companyid=<?php echo $row[2] ?>" >Accept</a> <span>|</span> <a href="process2.php?reject&studentid=<?php echo $row[1] ?>&companyid=<?php echo $row[2] ?>">Reject</a></td>
             </tr>
+            </form>
             <?php }}?>
         </tbody>
     </table>
-        <?php } else { ?>
+        <?php } else { if ($_SESSION['usertype'] == "company" && $_SESSION['companyid'] != 0 ){?>
+            <?php 
+                $obj = new Model ;
+                
+                $id = $obj->getStudentId($_GET['id']);
+                
+                $company_id = $obj->getCompanyId($_SESSION['userid']);
+                $is_offered = $obj->isOffered(18 , $company_id);
+                
+                if($is_offered == 1){
+                    echo "
+                    <p class='back-edit-link'>
+                        <a href='' >Offered</a> <span>|</span> <a href='students.php'>Back to Students List</a>
+                    </p>
+                ";
+                }else{
+                    echo "
+                    <p class='back-edit-link'>
+                        <a href='process2.php?offer&studentid=".$id."&companyid=".$company_id."&userid=".$_SESSION['userid']."' >Offer A Training</a> <span>|</span> <a href='students.php'>Back to Students List</a>
+                    </p>
+                ";
+                }
+                ?>
+        <?php }else { ?>
         <p class="back-edit-link">
-            <a href="students.php" >Back to Students List</a>
+            <a  href="students.php" >Back to Students List</a>
         </p>
-        <?php } ?>      
+        <?php }} ?>      
     <aside>
         <h2>Similar Students</h2>
         <p>

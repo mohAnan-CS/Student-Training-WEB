@@ -97,7 +97,8 @@
                             <td><?php echo $city ?></td>
                             <td><?php echo $row[5] ?></td>
                         </tr>
-            <?php } }else {
+            <?php } }
+            else {
                 echo "<tr>";
                 echo "<td><img class='student-img' src='images/not-found.png' alt='student photo'/></td>";
                 echo "<td>No Student</td>";

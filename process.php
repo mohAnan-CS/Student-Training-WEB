@@ -149,6 +149,8 @@ if (isset($_POST['add-company'])){
         $_POST['position-details'] , 
         $photo , 
         $userid );
+
+        $_SESSION['companyid'] = $object_model->getCompanyId($userid);
         header("location:companies.php");
     } else {
         header("location:companies.php");
