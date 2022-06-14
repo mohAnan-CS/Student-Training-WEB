@@ -7,6 +7,11 @@
     }
     ?>
 
+        <?php
+            $model_obj = new Model;
+            $model_obj->updateLastHit($_SESSION['userid']);
+            ?>
+
     <?php
         if(isset($_GET['id'])){
             $userid = $_GET['id'];
@@ -96,10 +101,10 @@
             <a  href="students.php" >Back to Students List</a>
         </p>
         <?php }} ?>      
-    <aside>
+    <aside class="student_aside">
         <h2>Similar Students</h2>
         <p>
-            A student or 2 students with same major
+            A student or 2 students with same major3
         </p>
     </aside>
 </main>

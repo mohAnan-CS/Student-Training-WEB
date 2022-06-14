@@ -7,6 +7,11 @@
         header("location:index.php");
     }
     ?>
+
+        <?php
+            $model_obj = new Model;
+            $model_obj->updateLastHit($_SESSION['userid']);
+            ?>
     <h2>Students List</h2>
     <form class="list-form"action="?" method="get">
         <div>
@@ -113,7 +118,7 @@
         <a class="add-student-link" href="add-student.php?is_edit=1&id=<?php echo $_SESSION['userid']?>" >Add Student</a>
     </div> 
     <?php } ?>
-    <aside>
+    <aside class="students_aside">
         <h2>Distinguished Students</h2>
         <p>
             Student Ali Ahmad from Birzeit is very special and he is looking for training in Computer Science...

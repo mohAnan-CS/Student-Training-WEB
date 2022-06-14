@@ -14,7 +14,7 @@
         <?php if(isset($_SESSION['is_login']) && $_SESSION['is_login'] == 1){ ?>
         <header class="header-logout">
             <?php $displayname = $_SESSION['displayname']; ?>
-            <img class="logo"src="images/logo-company.png" alt="logo" />
+            <img class="logo"src="images/presentation.png" alt="logo" />
             <h1>Student Training</h1> 
             <nav>
                 <ul class="nav-link">
@@ -33,7 +33,7 @@
         <?php }else{ ?>
         <!-- else statement for defult header -->
         <header>
-            <img class="logo"src="images/logo-company.png" alt="logo" />
+            <img class="logo"src="images/presentation.png" alt="logo" />
             <h1>Student Training</h1> 
             <nav>
                 <ul class="nav-link">

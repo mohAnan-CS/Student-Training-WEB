@@ -90,7 +90,7 @@ footer{
 
 /* header css */ 
 .logo{
-    width: 20rm;
+    width: 5em;
 }
 
 header{
@@ -104,8 +104,9 @@ header{
 
 header h1{
     padding-left: 20px;
-    color: rgb(58, 153, 161);
+    color: rgb(18, 19, 19);
     margin-right: auto;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 header img {
@@ -161,6 +162,23 @@ header img {
     color: rgb(255, 255, 255);
 }
 
+.header-logout input[type='submit']{
+    margin-top: 10px;
+    background-color: #000;
+    color: white;
+    font-weight: 550;
+    padding: 5px;
+    margin-left: 30px;
+    border: 2px black solid;
+    border-radius: 10px;
+    transition: 0.5s;
+}
+
+.header-logout input[type='submit']:hover{
+    background-color: rgb(31, 30, 30);
+    padding: 9px;
+    border: 1px yellow solid;
+}
 
 #login-head{
     color: rgb(193, 24, 24);
@@ -172,7 +190,7 @@ header img {
 }
 
 .nav-link li a:hover{
-    color: rgb(25, 158, 158);
+    color: rgb(154, 156, 156);
 }
 
 
@@ -211,15 +229,16 @@ header img {
     font-weight: 600;
     width: 200px;
     height: 40px;
-    background: gray;
+    background: rgb(54, 53, 53);
+    color: white;
     border-radius: 20px;
-    transition-duration: 0.45s ;
+    transition-duration: 0.5s ;
     margin-left: 40px;
     
 }
 
 .login-box input[type="submit"]:hover{
-    background-color: aqua;
+    background-color: rgb(103, 105, 105);
 }
 
 .login-main{
@@ -243,23 +262,185 @@ aside{
     right: 0;
     margin-right: 10px;
     border-radius: 20px;
+    padding: 20px;
 }
 
+aside h2 {
+    color: rgb(232, 4, 4);
+}
+
+
 .login-aside{
-    height: 17em;
-    padding: 15px;
+    height: 35%;
+    
 }
 
 .login-aside h2{
     border-bottom: 2px black solid;
     margin-bottom: 10px;
-    color: rgb(32, 117, 117);
+}
+/* students css aside */ 
+.students_aside{
+    padding-top: 0px;
+    height: 40%;
+    
 }
 
+.students_aside h2{
+    padding-top: 0px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 90%;
+}
+
+.student_aside{
+    height: 40%;
+    padding: 10px;
+}
+
+.student_aside h2{
+    padding-top: 0px;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    margin-left: 10px;
+    width: 90%;
+}
+
+.companies_aside{
+    padding: 20px;
+    height: 30%;
+}
+
+.companies_aside h2{
+    width: 95%;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 5px;
+    margin-bottom: 15px;
+}
+
+.company_aside{
+    padding: 20px;
+    height: 40%;
+}
+
+.company_aside h2{
+    width: 95%;
+    margin-left: 5px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.add_student_aside{
+    padding: 20px;
+    height: 60%;
+}
+
+.add_student_aside h2{
+    width: 90%;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    
+}
+
+.add_company_aside{
+    padding: 20px;
+    height: 60%;
+}
+
+.add_company_aside h2{
+    width: 90%;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
 /* student list css */
 
+.edit-table{
+    border: 0px;
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.edit-table  tbody {
+    border: 0px;
+    padding: 0px;
+}
+
+.edit-table tbody tr{
+    border: 0px;
+    padding: 20px;
+}
+
+.edit-table tbody tr td{
+    padding-left: 10px;
+    padding-right: 0px;
+    text-align: left;
+    padding-top: 20px;
+}
+
+.text-field-major{
+    height: 30px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px rgb(242, 4, 4) solid;
+}
+
+.edit-table textarea{
+    height: 80px;
+    width: 200px;
+    border: 2px rgb(242, 4, 4) solid;
+}
+ select{
+    width: 100px;
+    height: 25px;
+    background-color: gray;
+    border: 2px black solid;
+    transition-duration: 0.67s;
+    border-radius: 5px;
+}
+
+ select:hover{
+    background-color: black; 
+    color: white;
+}
+
+select:focus{
+    background-color: black;
+    color: white;
+}
+
+.add-clear-div{
+    margin-left: 30px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.add-clear-div input{
+    margin-left: 10px;
+    height: 30px;
+    padding: 5px;
+    background-color: black;
+    color: white;
+    font-weight: 550;
+    border-radius: 10px;
+    transition-duration: 0.6s;
+}
 
 
+.add-clear-div input:hover{
+    background-color: red;
+}
+
+.link{
+    margin-left: 30px;
+    margin-bottom: 20px;
+}
+
+.link-div{
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
 /* student css */
 
 .description-img{
@@ -474,3 +655,18 @@ caption{
     margin-bottom: 20px;
     margin-top: 20px;
 }
+
+.logout{
+    margin-top: 30px;
+    margin-bottom: 100px;
+    margin-left: 20px;
+}
+
+.logout p {
+    color: red;
+    font-weight: 550;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: larger;
+}
+/* aside css */
+

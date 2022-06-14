@@ -30,6 +30,11 @@
 
 
     <?php } else { ?>
+
+        <?php
+            $model_obj = new Model;
+            $model_obj->updateLastHit($_SESSION['userid']);
+            ?>
     <h2>Home Page</h2>
     <table class="table-info-home">
         <caption>User Information</caption>
@@ -65,11 +70,6 @@
                 </th>
             </tr>
         </thead>
-
-        <? 
-        
-        
-        ?>
         <tbody>            
             <?php
             if($_SESSION['usertype'] == "company"){
@@ -107,8 +107,6 @@
     <h2>Aside</h2>
     <p>
         The aside will have information related to the current page or ads.
-        The aside will have information related to the current page or ads.
-        The aside will have information related to the current page or ads
     </p>
 </aside>
 <?php include "parts/_footer.php" ?>

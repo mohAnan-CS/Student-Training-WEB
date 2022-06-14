@@ -8,6 +8,11 @@
     }
     ?>
 
+    <?php
+            $model_obj = new Model;
+            $model_obj->updateLastHit($_SESSION['userid']);
+            ?>
+
     <!-- isEdit == 1 -> add page -->
     <?php if ($_GET['is_edit'] == 1 ){ ?>
     <h2>Add Student</h2>
@@ -152,11 +157,14 @@
         </div>
     </form>
     <?php }  ?>
-    <a class="link-table" id="cancle-student-link" href="students.php">Cancle and return to Students List</a>
-    <aside>
+    <div class="link-div">
+        <a class="link" id="cancle-student-link" href="students.php">Cancle and return to Students List</a>
+    </div>
+    
+    <aside class="add_student_aside">
         <h2>Help</h2>
         <p>
-            Add your student details including projects and interests so that companies can select you...
+        Add your student details including projects and interests so that companies can select you...
         </p>
     </aside>
 </main>

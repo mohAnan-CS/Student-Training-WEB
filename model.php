@@ -437,9 +437,15 @@
             $statement->execute();
         }
 
-        public function updateLastHit($usertype , $userid){
+        public function updateLastHit($userid){
             $time = date("Y-m-d H:i:s");
-            echo $time ;
+            $object_db = new DatabaseConnection;
+            $conn = $object_db->connect();
+            $obj = new Model;
+            $query = "UPDATE `user` SET `lasthit`='$time'  
+            WHERE `user`.`id` = $userid ";
+            $statement = $conn->prepare($query);
+            $statement->execute();
         }
 
         public function getStatus($studentid , $companyid){

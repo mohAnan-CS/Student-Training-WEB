@@ -7,6 +7,11 @@
         header("location:index.php");
     }
     ?>
+
+        <?php
+            $model_obj = new Model;
+            $model_obj->updateLastHit($_SESSION['userid']);
+            ?>
     
     <?php
         if(isset($_GET['id'])){
@@ -43,10 +48,10 @@
             <a href="companies.php" >Back to Company List</a>
         </p>
         <?php } ?>      
-    <aside>
+    <aside class="company_aside">
         <h2>Similar Students</h2>
         <p>
-            A student or 2 students with same major
+            Another companies in same location looking for students...
         </p>
     </aside>
 </main>
