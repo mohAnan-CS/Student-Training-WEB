@@ -56,9 +56,9 @@
             <?php } }else {
                 echo "<tr>";
                     echo "<td><img class='student-img' src='images/not-found.png' alt='student photo'/></td>";
-                    echo "<td>No Student</td>";
-                    echo "<td>No Student</td>";
-                    echo "<td>No Student</td>";
+                    echo "<td>No Company</td>";
+                    echo "<td>No Company</td>";
+                    echo "<td>No Company</td>";
                 echo "</tr>";
             } }         
             else {

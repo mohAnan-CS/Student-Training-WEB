@@ -108,7 +108,7 @@
     <div class="add-link-div">
         <a class="add-student-link" href="add-student.php?is_edit=0&id=<?php echo $_SESSION['userid']?>" >Edit Student</a>
     </div>    
-    <?php } else if ($counter == 0 && $_SESSION['usertype'] == 'student'){ echo $counter?>
+    <?php } else if ($counter == 0 && $_SESSION['usertype'] == 'student'){ //echo $counter?>
     <div class="add-link-div">
         <a class="add-student-link" href="add-student.php?is_edit=1&id=<?php echo $_SESSION['userid']?>" >Add Student</a>
     </div> 

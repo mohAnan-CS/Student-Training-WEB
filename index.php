@@ -74,11 +74,13 @@
             <?php
             if($_SESSION['usertype'] == "company"){
                 $userid = $_SESSION['userid'];
+                $_SESSION['companyid'] = 0 ;
                 $model_obj = new Model;
                 $statement = $model_obj->getAllCompany($userid);
                 $count = $statement->rowCount();
                 if ($count > 0){
                     while($row=$statement->fetch(PDO::FETCH_NUM)){
+                        $_SESSION['companyid'] = $row[0];
                         ?>
                     <tr>       
                         <td><?php echo $row[1] ?></td>

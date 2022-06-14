@@ -52,7 +52,7 @@
         <?php
         $obj = new Model ;
         $student_id = $obj->getStudentId($_GET['id']);
-        //$company_id = $obj->getCompanyId()
+        
         $statement = $obj->getOffers($student_id);
         $count = $statement->rowCount();
                 if ($count > 0){
@@ -64,7 +64,6 @@
                 <td><?php echo $city_name?></td>
                 <td><?php echo $row[3] ?></td>
                 <td><?php echo $row[4] ?></td>
-                <?php echo "student id = ".$row[1]." company id = ".$row[2]; ?>
                 <td><a  href="process2.php?accept&studentid=<?php echo $row[1] ?>&companyid=<?php echo $row[2] ?>" >Accept</a> <span>|</span> <a href="process2.php?reject&studentid=<?php echo $row[1] ?>&companyid=<?php echo $row[2] ?>">Reject</a></td>
             </tr>
             </form>
@@ -74,16 +73,14 @@
         <?php } else { if ($_SESSION['usertype'] == "company" && $_SESSION['companyid'] != 0 ){?>
             <?php 
                 $obj = new Model ;
-                
                 $id = $obj->getStudentId($_GET['id']);
-                
                 $company_id = $obj->getCompanyId($_SESSION['userid']);
-                $is_offered = $obj->isOffered(18 , $company_id);
-                
+                $is_offered = $obj->isOffered($id , $company_id);
+                $status = $obj->getStatus($id , $company_id);
                 if($is_offered == 1){
                     echo "
                     <p class='back-edit-link'>
-                        <a href='' >Offered</a> <span>|</span> <a href='students.php'>Back to Students List</a>
+                        <a href='' >Offered ($status)</a> <span>|</span> <a href='students.php'>Back to Students List</a>
                     </p>
                 ";
                 }else{

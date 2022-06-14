@@ -431,7 +431,7 @@
 
             $object_db = new DatabaseConnection;
             $conn = $object_db->connect();
-            $query = "INSERT IGNORE INTO `students_applications` (`id` , `studentid` , `companyid` , `applydate` , `applicationstatus` , `userid`)
+            $query = "INSERT  INTO `students_applications` (`id` , `studentid` , `companyid` , `applydate` , `applicationstatus` , `userid`)
             VALUES ('NULL' , '$studentid' , '$companyid' , '$applydate' , 'sent' , '$userid' )";
             $statement = $conn->prepare($query);
             $statement->execute();
@@ -440,6 +440,23 @@
         public function updateLastHit($usertype , $userid){
             $time = date("Y-m-d H:i:s");
             echo $time ;
+        }
+
+        public function getStatus($studentid , $companyid){
+            $object_db = new DatabaseConnection;
+            $conn = $object_db->connect();
+            $query = "SELECT * FROM students_applications WHERE studentid = ".$studentid." AND companyid = ".$companyid;
+            $statement = $conn->prepare($query);
+            $statement->execute();
+            $count = $statement->rowCount();
+            if ($count > 0){
+                $status = "" ;
+                while($row=$statement->fetch(PDO::FETCH_NUM)){
+                    $status = $row[4];
+                }
+                return $status ; 
+            }else{
+            }
         }
     }
 
