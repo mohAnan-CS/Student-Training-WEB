@@ -5,11 +5,11 @@
     if (!isset($_SESSION['userid'])){
         header("location:index.php");
     }
-    ?>
+?>
 
     <?php
-            $model_obj = new Model;
-            $model_obj->updateLastHit($_SESSION['userid']);
+        $model_obj = new Model;
+        $model_obj->updateLastHit($_SESSION['userid']);
             ?>
 
     <!-- isEdit == 1 -> add page company -->

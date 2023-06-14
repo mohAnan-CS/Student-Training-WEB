@@ -46,7 +46,7 @@
         </header>
         <?php } ?>
         <?php 
-            if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['logout'])){
+            if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['logout'])){
                 session_destroy();
                 header("location:logout.php");
             }

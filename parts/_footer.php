@@ -1,7 +1,7 @@
         <footer>
             <div class="footer-content">
                 <h3>Student Training</h3>
-                <p>EXALT is a software development training center of excellence specialized in Web Services, 
+                <p>A software development training center of excellence specialized in Web Services, 
                     Backend/API Development, Mobile Apps and Validation. </p>
                     <ul class="socials">
                         <li><a href="https://www.facebook.com/profile.php?id=100010636953554"><i class="fa fa-facebook"></i></a></li>
