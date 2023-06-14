@@ -5,7 +5,7 @@ The website utilizes a combination of HTML, CSS, PHP, and PhpMyAdmin technologie
 
 By utilizing this technology stack, the Student Training Company project aims to streamline the process of connecting companies with potential trainees, ultimately enhancing opportunities for professional growth and development.
 
-**[Click here to watch the Screen Recording](https://drive.google.com/drive/u/1/folders/1WfDALmeqS8Ka95nuYOADVjChYlHaqrQy)**
+**Check out the [video link](https://drive.google.com/file/d/1FcMS7yjZ0MFZuWULFbDF9tEvytCGINFR/view?usp=sharing) for all website .**
 
 
 # Pages
