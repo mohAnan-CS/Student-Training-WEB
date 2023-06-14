@@ -6,3 +6,8 @@ The website utilizes a combination of HTML, CSS, PHP, and PhpMyAdmin technologie
 By utilizing this technology stack, the Student Training Company project aims to streamline the process of connecting companies with potential trainees, ultimately enhancing opportunities for professional growth and development.
 
 
+![](https://github.com/mohAnan-CS/Student-Training-WEB/blob/master/images/ui/home-page.png)
+*Description: This is the homepage of the Student Training Company website.*
+
+
+
