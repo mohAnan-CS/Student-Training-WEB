@@ -7,17 +7,20 @@ By utilizing this technology stack, the Student Training Company project aims to
 
 # Pages
 
+## Login Page
+![](https://github.com/mohAnan-CS/Student-Training-WEB/blob/master/images/ui/login-page.png)
+
+## Home Page
+![](https://github.com/mohAnan-CS/Student-Training-WEB/blob/master/images/ui/home-page.png)
+
 ## Student Page
 ![](https://github.com/mohAnan-CS/Student-Training-WEB/blob/master/images/ui/student-page.png)
 
+## Company Page
+![](https://github.com/mohAnan-CS/Student-Training-WEB/blob/master/images/ui/company-page.png)
+
 ## Student List Page
 ![](https://github.com/mohAnan-CS/Student-Training-WEB/blob/master/images/ui/student-list-page.png)
-
-## Logout Page
-![](https://github.com/mohAnan-CS/Student-Training-WEB/blob/master/images/ui/logout-page.png)
-
-## Login Page
-![](https://github.com/mohAnan-CS/Student-Training-WEB/blob/master/images/ui/login-page.png)
 
 ## Company List Page
 ![](https://github.com/mohAnan-CS/Student-Training-WEB/blob/master/images/ui/company-list-page.png)
@@ -28,14 +31,6 @@ By utilizing this technology stack, the Student Training Company project aims to
 ## Edit Company Page
 ![](https://github.com/mohAnan-CS/Student-Training-WEB/blob/master/images/ui/edit-company-page.png)
 
-## Company Page
-![](https://github.com/mohAnan-CS/Student-Training-WEB/blob/master/images/ui/company-page.png)
-
-## Company List Page
-![](https://github.com/mohAnan-CS/Student-Training-WEB/blob/master/images/ui/company-list-page.png)
-
-## Home Page
-![](https://github.com/mohAnan-CS/Student-Training-WEB/blob/master/images/ui/home-page.png)
-
-
+## Logout Page
+![](https://github.com/mohAnan-CS/Student-Training-WEB/blob/master/images/ui/logout-page.png)
 
